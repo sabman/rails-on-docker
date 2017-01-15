@@ -1,0 +1,37 @@
+---
+version: '2'
+services:
+  proxy:
+    image: jwilder/nginx-proxy:latest
+    ports:
+      - "80:80"
+    volumes:
+      - "/var/run/docker.sock:/tmp/docker.sock"
+  db:
+    image: postgres
+    ports:
+      - 5432
+    env_file:
+      - .env-docker
+  redis:
+    image: redis
+  cache:
+    image: memcached
+  web:
+    build: .
+    command: bundle exec puma -C config/puma.rb
+    env_file:
+      - .env-docker
+    depends_on:
+      - db
+      - redis
+      - cache
+  worker:
+    build: .
+    command: bundle exec sidekiq -e production -c 25
+    env_file:
+      - .env-docker
+    depends_on:
+      - db
+      - redis
+      - cache
