@@ -73,5 +73,4 @@ We use Redis as the backend for [Sidekiq](http://sidekiq.org/).
 This container runs a Memached instance for Rails fragment caching.
 
 ## About me
-
-I'm a Ruby engineer at [nine.ch](https://nine.ch). I don't consider myself a Docker expert. But I had and still have fun experimenting with it. If you're interested or have question regarding this repo you'll find me on [Twitter](https://twitter.com/neckhair82).
+I'm a fullstack developer based in Berlin. This repo was modified from https://github.com/neckhair/rails-on-docker
