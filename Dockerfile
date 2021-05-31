@@ -1,4 +1,4 @@
-FROM alpine:3.4
+FROM alpine:3
 
 ENV APP_DIR=/usr/app
 
